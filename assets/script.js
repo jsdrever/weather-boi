@@ -1,31 +1,31 @@
 var cityInputEl = document.getElementsByClassName("user-input");
 var repoList = document.querySelector('ul');
-
+var fetchButton = document.getElementById('fetch-btn');
 var city;
 var APIkey = "2b8c2ba79187e44f01c2404a79e9da71"
 
 //! fix this eventually
-var printCityConditions = function (city) {
-    var listEl = $('<li>');
-    var listDetail = name.concat(' on ', date);
-    listEl.addClass('list-group-item').text(listDetail);
-    listEl.appendTo(skillsListEl);
-  };
-//! fix this eventually (3rd party api activity 24)
-var handleFormSubmit = function (event) {
-    event.preventDefault();
+// var printCityConditions = function (city) {
+//     var listEl = $('<li>');
+//     var listDetail = name.concat(' on ', date);
+//     listEl.addClass('list-group-item').text(listDetail);
+//     listEl.appendTo(skillsListEl);
+//   };
+// //! fix this eventually (3rd party api activity 24)
+// var handleFormSubmit = function (event) {
+//     event.preventDefault();
 
-    var cityInput = cityInputEl.val();
+//     var cityInput = cityInputEl.val();
 
-    if(!cityInput) {
-        window.alert("Try typing in a city name before clicking mouse maniac");
-        return;
-    }
+//     if(!cityInput) {
+//         window.alert("Try typing in a city name before clicking mouse maniac");
+//         return;
+//     }
 
-    printCityConditions(cityInput);
+//     printCityConditions(cityInput);
 
-    cityInputEl.val('');
-}
+//     cityInputEl.val('');
+// }
 
 
 function getApi() {
@@ -37,6 +37,7 @@ function getApi() {
       })
       .then(function (data) {
         for (var i = 0; i < data.length; i++) {
+            console.log(data)
           var listItem = document.createElement('li');
           listItem.textContent = data[i].html_url;
           repoList.appendChild(listItem);
@@ -44,7 +45,7 @@ function getApi() {
       });
   }
   
-  fetchButton.addEventListener('submit', getApi);
+  fetchButton.addEventListener('click', getApi);
   
 
 // ! heres the url i think we're meant to use
