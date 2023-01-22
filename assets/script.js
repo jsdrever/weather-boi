@@ -1,6 +1,6 @@
 var cityInputEl = document.getElementsByClassName("user-input");
-var repoList = document.querySelector('ul');
-var fetchButton = document.getElementById('fetch-btn');
+var todayList = document.getElementById("todayCondition");
+var fetchButton = document.getElementById('#fetch-btn');
 var city;
 var APIkey = "2b8c2ba79187e44f01c2404a79e9da71"
 
@@ -29,7 +29,8 @@ var APIkey = "2b8c2ba79187e44f01c2404a79e9da71"
 
 
 function getApi() {
-    var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={APIkey}';
+    // var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={APIkey}';
+    var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=city/&appid=2b8c2ba79187e44f01c2404a79e9da71';
   
     fetch(requestUrl)
       .then(function (response) {
@@ -40,7 +41,7 @@ function getApi() {
             console.log(data)
           var listItem = document.createElement('li');
           listItem.textContent = data[i].html_url;
-          repoList.appendChild(listItem);
+          todayList.appendChild(listItem);
         }
       });
   }
