@@ -51,10 +51,10 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=lat=34.0901&lon=-118
 });  
 
 
-var timerInterval = setInterval(function () {
-  var time = dayjs().format('MMM D, YYYY, hh:mm:ss a');
-  $('#theDate').text(time);
-}, 1000);
+// var timerInterval = setInterval(function () {
+//   var time = dayjs().format('MMM D, YYYY, hh:mm:ss a');
+//   $('#theDate').text(time);
+// }, 1000);
 
 
 {/* 
