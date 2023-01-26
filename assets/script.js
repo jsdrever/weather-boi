@@ -45,31 +45,82 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=lat=34.0901&lon=-118
   
   
   // theDateTomorrow.textContent = `${theDate}`
-  // windOneEl.textContent = `Wind: ${wind}`
+  // windOneEl.textContent = `Wind: ${windyOne}`
   // tempOneEl.textContent = `Temp: ${temperaturyOne}`
-  // humidOneEl.textContent = `Humidity: ${humidity}`
+  // humidOneEl.textContent = `Humidity: ${humidityOne}`
+  
+  //! next day
+  // const theDateSecond = data. 
+  // const windyTwo = data.wind.speed
+  // const temperaturyTwo = data.main.temp
+  // const humidityTwo = data.main.humidity
+  
+  // var theDateTwo = document.getElementById("the-date-two");
+  // var windTwoEl = document.getElementById("windTwo");
+  // var tempTwoEl = document.getElementById("temperatureTwo");
+  // var humidTwoEl = document.getElementById("humidityTwo");
   
   
+  // theDateTwo.textContent = `${theDateSecond}`
+  // windTwoEl.textContent = `Wind: ${windyTwo}`
+  // tempTwoEl.textContent = `Temp: ${temperaturyTwo}`
+  // humidTwoEl.textContent = `Humidity: ${humidityTwo}`
+  
+  //! third day of five forecast
+  // const theDateThird = data. 
+  // const windyThree = data.wind.speed
+  // const temperaturyThree = data.main.temp
+  // const humidityThree = data.main.humidity
+  
+  // var theDateThree = document.getElementById("the-date-three");
+  // var windThreeEl = document.getElementById("windTwo");
+  // var tempThreeEl = document.getElementById("temperatureTwo");
+  // var humidThreeEl = document.getElementById("humidityTwo");
+  
+  
+  // theDateThird.textContent = `${theDateThird}`
+  // windThreeEl.textContent = `Wind: ${windyThree}`
+  // tempThreeEl.textContent = `Temp: ${temperaturyThree}`
+  // humidThreeEl.textContent = `Humidity: ${humidityThree}`
+  
+  //! fourth day of five day forecast
+  // const theDateFourth = data. 
+  // const windyFour = data.wind.speed
+  // const temperaturyFour = data.main.temp
+  // const humidityFour = data.main.humidity
+  
+  // var theDateFour = document.getElementById("the-date-three");
+  // var windFourEl = document.getElementById("windTwo");
+  // var tempFourEl = document.getElementById("temperatureTwo");
+  // var humidFourEl = document.getElementById("humidityTwo");
+  
+  
+  // theDateFour.textContent = `${theDateFourth}`
+  // windFourEl.textContent = `Wind: ${windyFour}`
+  // tempFourEl.textContent = `Temp: ${temperaturyFour}`
+  // humidFourEl.textContent = `Humidity: ${humidityFour}`
+  
+  //! fifth day of five day forecast
+  // const theDateFifth = data. 
+  // const windyFive = data.wind.speed
+  // const temperaturyFive = data.main.temp
+  // const humidityFive = data.main.humidity
+  
+  // var theDateFive = document.getElementById("the-date-five");
+  // var windFiveEl = document.getElementById("windFive");
+  // var tempFiveEl = document.getElementById("temperatureFive");
+  // var humidFiveEl = document.getElementById("humidityFive");
+  
+  
+  // theDateFive.textContent = `${theDateFifth}`
+  // windFiveEl.textContent = `Wind: ${windyFive}`
+  // tempFiveEl.textContent = `Temp: ${temperaturyFive}`
+  // humidFiveEl.textContent = `Humidity: ${humidityFive}`
 });  
+
+
 // fetchButton.addEventListener('click', getApi);
 // console.log('clicked');
-
-
-// var timerInterval = setInterval(function () {
-  //   var time = dayjs().format('MMM D, YYYY, hh:mm:ss a');
-  //   $('#theDate').text(time);
-  // }, 1000);
-  
-  
-  {/* 
-    id="the-date"
-    id="temperature" 
-    id="wind" 
-    id="humidity"     */}
-
-
-
-
 
 // var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={APIkey}';
 // var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=city/&appid=2b8c2ba79187e44f01c2404a79e9da71';
