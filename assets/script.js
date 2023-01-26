@@ -63,10 +63,10 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${data[0].lat}&lon=$
   humidOneEl.textContent = ` ${humidityOne}`
   
   //! next day
-  const theDateSecond = data.list[1].dt_txt 
-  const windyTwo = data.list[1].wind.speed
-  const temperaturyTwo = data.list[1].main.temp
-  const humidityTwo = data.list[1].weather[0].description
+  const theDateSecond = data.list[8].dt_txt 
+  const windyTwo = data.list[8].wind.speed
+  const temperaturyTwo = data.list[8].main.temp
+  const humidityTwo = data.list[8].weather[0].description
   
   var theDateTwo = document.getElementById("the-date-two");
   var windTwoEl = document.getElementById("windTwo");
@@ -80,15 +80,15 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${data[0].lat}&lon=$
   humidTwoEl.textContent = `${humidityTwo}`
   
   //! third day of five forecast
-  const theDateThird = data.list[2].dt_txt
-  const windyThree = data.list[2].wind.speed
-  const temperaturyThree = data.list[2].main.temp
-  const humidityThree = data.list[2].weather[0].description
+  const theDateThird = data.list[16].dt_txt
+  const windyThree = data.list[16].wind.speed
+  const temperaturyThree = data.list[16].main.temp
+  const humidityThree = data.list[16].weather[0].description
   
   var theDateThree = document.getElementById("the-date-three");
-  var windThreeEl = document.getElementById("windTwo");
-  var tempThreeEl = document.getElementById("temperatureTwo");
-  var humidThreeEl = document.getElementById("humidityTwo");
+  var windThreeEl = document.getElementById("windThree");
+  var tempThreeEl = document.getElementById("temperatureThree");
+  var humidThreeEl = document.getElementById("humidityThree");
   
   
   theDateThree.textContent = `${theDateThird}`
@@ -97,15 +97,15 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${data[0].lat}&lon=$
   humidThreeEl.textContent = `${humidityThree}`
   
   //! fourth day of five day forecast
-  const theDateFourth = data.list[3].dt_txt
-  const windyFour = data.list[3].wind.speed
-  const temperaturyFour = data.list[3].main.temp
-  const humidityFour = data.list[3].weather[0].description
+  const theDateFourth = data.list[24].dt_txt
+  const windyFour = data.list[24].wind.speed
+  const temperaturyFour = data.list[24].main.temp
+  const humidityFour = data.list[24].weather[0].description
   
-  var theDateFour = document.getElementById("the-date-three");
-  var windFourEl = document.getElementById("windTwo");
-  var tempFourEl = document.getElementById("temperatureTwo");
-  var humidFourEl = document.getElementById("humidityTwo");
+  var theDateFour = document.getElementById("the-date-four");
+  var windFourEl = document.getElementById("windFour");
+  var tempFourEl = document.getElementById("temperatureFour");
+  var humidFourEl = document.getElementById("humidityFour");
   
   
   theDateFour.textContent = `${theDateFourth}`
@@ -114,10 +114,10 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${data[0].lat}&lon=$
   humidFourEl.textContent = `${humidityFour}`
   
   //! fifth day of five day forecast
-  const theDateFifth = data.list[4].dt_txt
-  const windyFive = data.list[4].wind.speed
-  const temperaturyFive = data.list[4].main.temp
-  const humidityFive = data.list[4].weather[0].description
+  const theDateFifth = data.list[32].dt_txt
+  const windyFive = data.list[32].wind.speed
+  const temperaturyFive = data.list[32].main.temp
+  const humidityFive = data.list[32].weather[0].description
   
   var theDateFive = document.getElementById("the-date-five");
   var windFiveEl = document.getElementById("windFive");
