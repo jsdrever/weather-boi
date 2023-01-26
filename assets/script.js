@@ -1,15 +1,27 @@
-// var cityInputEl = document.getElementById("user-input");
+
 var todayList = document.getElementById("todayCondition");
-var fetchButton = document.getElementById('fetch-btn');
+var fetchButton = document.getElementById('button-addon1');
 var city = document.getElementById('user-input')
 var APIkey = "694870d5dec7724f0a20d6d389e86c79"
-// var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIkey;
+var recentCitySearch = document.getElementById('recent-city');
+var cityList = JSON.parse(localStorage.getItem('cityList')) || [];
 
-//! need a function to take in cityInputEl and use it to target the lat and lon in the fetch request
 
-// function getApi() {} 
-//! will have to adjust lat and lon to be some kind of input
-fetch(`https://api.openweathermap.org/data/2.5/weather?lat=34.0901&lon=-118.4065&appid=${APIkey}`)
+fetchButton.addEventListener('click', getApi);
+
+
+function getApi() { 
+  cityList.push(city.value)
+  localStorage.setItem('cityList', JSON.stringify(cityList));
+  var button = document.createElement('button')
+  button.textContent = city.value
+  recentCitySearch.appendChild(button);
+  fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city.value}&limit=1&appid=${APIkey}`)
+  
+  .then(response => response.json()).then(data => {
+    console.log(data)
+
+fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${data[0].lat}&lon=${data[0].lon}&appid=${APIkey}`)
 .then(response => response.json()).then(data => {console.log(data)
   const cityName = data.name
   const wind = data.wind.speed
@@ -28,115 +40,103 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=34.0901&lon=-118.4065
   humidEl.textContent = `Humidity: ${humidity}`
 });
 
+
 //five day forecast
-//! why error 400 wrong lat
-fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=lat=34.0901&lon=-118.4065&appid=${APIkey}`)
+fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${data[0].lat}&lon=${data[0].lon}&appid=${APIkey}`)
+
 .then(response => response.json()).then(data => {console.log(data)
   
-  // const theDate = data. 
-  // const windyOne = data.wind.speed
-  // const temperaturyOne = data.main.temp
-  // const humidityOne = data.main.humidity
+  const theDate = data.list[0].dt_txt
+  const windyOne = data.list[0].wind.speed
+  const temperaturyOne = data.list[0].main.temp
+  const humidityOne = data.list[0].weather[0].description
   
-  // var theDateTomorrow = document.getElementById("the-date");
-  // var windOneEl = document.getElementById("wind-one");
-  // var tempOneEl = document.getElementById("temperature-one");
-  // var humidOneEl = document.getElementById("humidity-one");
+  var theDateTomorrow = document.getElementById("the-date");
+  var windOneEl = document.getElementById("wind-one");
+  var tempOneEl = document.getElementById("temperature-one");
+  var humidOneEl = document.getElementById("humidity-one");
   
   
-  // theDateTomorrow.textContent = `${theDate}`
-  // windOneEl.textContent = `Wind: ${windyOne}`
-  // tempOneEl.textContent = `Temp: ${temperaturyOne}`
-  // humidOneEl.textContent = `Humidity: ${humidityOne}`
+  theDateTomorrow.textContent = `${theDate}`
+  windOneEl.textContent = `Wind: ${windyOne}`
+  tempOneEl.textContent = `Temp: ${temperaturyOne}`
+  humidOneEl.textContent = ` ${humidityOne}`
   
   //! next day
-  // const theDateSecond = data. 
-  // const windyTwo = data.wind.speed
-  // const temperaturyTwo = data.main.temp
-  // const humidityTwo = data.main.humidity
+  const theDateSecond = data.list[1].dt_txt 
+  const windyTwo = data.list[1].wind.speed
+  const temperaturyTwo = data.list[1].main.temp
+  const humidityTwo = data.list[1].weather[0].description
   
-  // var theDateTwo = document.getElementById("the-date-two");
-  // var windTwoEl = document.getElementById("windTwo");
-  // var tempTwoEl = document.getElementById("temperatureTwo");
-  // var humidTwoEl = document.getElementById("humidityTwo");
+  var theDateTwo = document.getElementById("the-date-two");
+  var windTwoEl = document.getElementById("windTwo");
+  var tempTwoEl = document.getElementById("temperatureTwo");
+  var humidTwoEl = document.getElementById("humidityTwo");
   
   
-  // theDateTwo.textContent = `${theDateSecond}`
-  // windTwoEl.textContent = `Wind: ${windyTwo}`
-  // tempTwoEl.textContent = `Temp: ${temperaturyTwo}`
-  // humidTwoEl.textContent = `Humidity: ${humidityTwo}`
+  theDateTwo.textContent = `${theDateSecond}`
+  windTwoEl.textContent = `Wind: ${windyTwo}`
+  tempTwoEl.textContent = `Temp: ${temperaturyTwo}`
+  humidTwoEl.textContent = `${humidityTwo}`
   
   //! third day of five forecast
-  // const theDateThird = data. 
-  // const windyThree = data.wind.speed
-  // const temperaturyThree = data.main.temp
-  // const humidityThree = data.main.humidity
+  const theDateThird = data.list[2].dt_txt
+  const windyThree = data.list[2].wind.speed
+  const temperaturyThree = data.list[2].main.temp
+  const humidityThree = data.list[2].weather[0].description
   
-  // var theDateThree = document.getElementById("the-date-three");
-  // var windThreeEl = document.getElementById("windTwo");
-  // var tempThreeEl = document.getElementById("temperatureTwo");
-  // var humidThreeEl = document.getElementById("humidityTwo");
+  var theDateThree = document.getElementById("the-date-three");
+  var windThreeEl = document.getElementById("windTwo");
+  var tempThreeEl = document.getElementById("temperatureTwo");
+  var humidThreeEl = document.getElementById("humidityTwo");
   
   
-  // theDateThird.textContent = `${theDateThird}`
-  // windThreeEl.textContent = `Wind: ${windyThree}`
-  // tempThreeEl.textContent = `Temp: ${temperaturyThree}`
-  // humidThreeEl.textContent = `Humidity: ${humidityThree}`
+  theDateThree.textContent = `${theDateThird}`
+  windThreeEl.textContent = `Wind: ${windyThree}`
+  tempThreeEl.textContent = `Temp: ${temperaturyThree}`
+  humidThreeEl.textContent = `${humidityThree}`
   
   //! fourth day of five day forecast
-  // const theDateFourth = data. 
-  // const windyFour = data.wind.speed
-  // const temperaturyFour = data.main.temp
-  // const humidityFour = data.main.humidity
+  const theDateFourth = data.list[3].dt_txt
+  const windyFour = data.list[3].wind.speed
+  const temperaturyFour = data.list[3].main.temp
+  const humidityFour = data.list[3].weather[0].description
   
-  // var theDateFour = document.getElementById("the-date-three");
-  // var windFourEl = document.getElementById("windTwo");
-  // var tempFourEl = document.getElementById("temperatureTwo");
-  // var humidFourEl = document.getElementById("humidityTwo");
+  var theDateFour = document.getElementById("the-date-three");
+  var windFourEl = document.getElementById("windTwo");
+  var tempFourEl = document.getElementById("temperatureTwo");
+  var humidFourEl = document.getElementById("humidityTwo");
   
   
-  // theDateFour.textContent = `${theDateFourth}`
-  // windFourEl.textContent = `Wind: ${windyFour}`
-  // tempFourEl.textContent = `Temp: ${temperaturyFour}`
-  // humidFourEl.textContent = `Humidity: ${humidityFour}`
+  theDateFour.textContent = `${theDateFourth}`
+  windFourEl.textContent = `Wind: ${windyFour}`
+  tempFourEl.textContent = `Temp: ${temperaturyFour}`
+  humidFourEl.textContent = `${humidityFour}`
   
   //! fifth day of five day forecast
-  // const theDateFifth = data. 
-  // const windyFive = data.wind.speed
-  // const temperaturyFive = data.main.temp
-  // const humidityFive = data.main.humidity
+  const theDateFifth = data.list[4].dt_txt
+  const windyFive = data.list[4].wind.speed
+  const temperaturyFive = data.list[4].main.temp
+  const humidityFive = data.list[4].weather[0].description
   
-  // var theDateFive = document.getElementById("the-date-five");
-  // var windFiveEl = document.getElementById("windFive");
-  // var tempFiveEl = document.getElementById("temperatureFive");
-  // var humidFiveEl = document.getElementById("humidityFive");
+  var theDateFive = document.getElementById("the-date-five");
+  var windFiveEl = document.getElementById("windFive");
+  var tempFiveEl = document.getElementById("temperatureFive");
+  var humidFiveEl = document.getElementById("humidityFive");
   
   
-  // theDateFive.textContent = `${theDateFifth}`
-  // windFiveEl.textContent = `Wind: ${windyFive}`
-  // tempFiveEl.textContent = `Temp: ${temperaturyFive}`
-  // humidFiveEl.textContent = `Humidity: ${humidityFive}`
+  theDateFive.textContent = `${theDateFifth}`
+  windFiveEl.textContent = `Wind: ${windyFive}`
+  tempFiveEl.textContent = `Temp: ${temperaturyFive}`
+  humidFiveEl.textContent = `${humidityFive}`
 });  
+})
+}
 
-// ! fetch button only reads null
-// fetchButton.addEventListener('click', getApi);
-// console.log('it has been clicked');
 
-// var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={APIkey}';
-// var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=city/&appid=2b8c2ba79187e44f01c2404a79e9da71';
-  
 
-  
-
-// ! heres the url i think we're meant to use
-// api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-// ! alt if i have to include more parameters
-// 
 // ! we could use this to check outside the country i think. that'd be kinda cool
 //https://api.openweathermap.org/data/2.5/weather?q={city name},{state code},{country code}&appid={API key}
 
-// next i think we should make query selectors for all of the id's we'll need
-// make a function to create and append the previous city searches from local storage
-// display current dates weather conditions
-// display five day forecast.https://api.openweathermap.org/data/2.5/weather?q=city/&appid=${APIkey}
+
 
