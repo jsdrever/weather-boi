@@ -1,6 +1,6 @@
 // var cityInputEl = document.getElementById("user-input");
 var todayList = document.getElementById("todayCondition");
-var fetchButton = document.getElementById('#fetch-btn');
+var fetchButton = document.getElementById('fetch-btn');
 var city = document.getElementById('user-input')
 var APIkey = "694870d5dec7724f0a20d6d389e86c79"
 // var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIkey;
@@ -118,9 +118,9 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=lat=34.0901&lon=-118
   // humidFiveEl.textContent = `Humidity: ${humidityFive}`
 });  
 
-
+// ! fetch button only reads null
 // fetchButton.addEventListener('click', getApi);
-// console.log('clicked');
+// console.log('it has been clicked');
 
 // var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={APIkey}';
 // var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=city/&appid=2b8c2ba79187e44f01c2404a79e9da71';
